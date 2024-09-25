@@ -22,15 +22,15 @@ public class EndBall : MonoBehaviour
             {
                 PlayerPrefs.SetInt(_levelName, nStars);
             }
-            if(_levelID> PlayerPrefs.GetInt("LevelCompleted", 0))
+            if(_levelID == PlayerPrefs.GetInt("LevelCompleted", 1))
             {
-                PlayerPrefs.SetInt("LevelCompleted", _levelID);
+                PlayerPrefs.SetInt("LevelCompleted", _levelID+1);
             }
 
             _starsUI.GetComponent<RectTransform>().localPosition = new Vector2(0,-687);
             _gameOverUI.SetActive(true);
-            _homeUI.GetComponent<RectTransform>().localPosition = new Vector2(-181, -125);
-            _reloadUI.GetComponent<RectTransform>().localPosition = new Vector2(178, -125);
+            _homeUI.GetComponent<RectTransform>().localPosition = new Vector2(-181, -65);
+            _reloadUI.GetComponent<RectTransform>().localPosition = new Vector2(178, -65);
             Destroy(this.gameObject);
         }
         if (collision.CompareTag("Star"))
